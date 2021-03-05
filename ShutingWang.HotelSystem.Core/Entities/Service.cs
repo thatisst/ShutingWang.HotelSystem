@@ -13,5 +13,9 @@ namespace ShutingWang.HotelSystem.Core.Entities
         public string SDesc { get; set; }
         public decimal Amount { get; set; }
         public DateTime ServiceDate { get; set; }
+
+        public Room Room { get; set; }
+
+
     }
 }

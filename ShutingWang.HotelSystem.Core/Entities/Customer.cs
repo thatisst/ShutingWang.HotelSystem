@@ -18,5 +18,7 @@ namespace ShutingWang.HotelSystem.Core.Entities
         public int TotalPersons { get; set; }
         public int BookingDays { get; set; }
         public decimal Advance { get; set; }
+
+        public Room Room { get; set; }
     }
 }
