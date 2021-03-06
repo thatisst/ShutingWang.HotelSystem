@@ -24,26 +24,37 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<CustomerResponseModel> AddNewCustomer(CustomerRequestModel customerRequestModel)
+        public async Task<CustomerResponseModel> AddNewCustomerAsync(CustomerRequestModel customerRequestModel)
         {
             var customer = _mapper.Map<Customer>(customerRequestModel);
             var createdCustomer = await _customerRepository.AddCustomerAsync(customer);
             return _mapper.Map<CustomerResponseModel>(createdCustomer);
         }
 
-        public async Task DeleteCustomerInfo(CustomerRequestModel customerRequestModel)
+        public async Task DeleteCustomerInfoAsync(CustomerRequestModel customerRequestModel)
         {
-            throw new NotImplementedException();
+            var customer = _mapper.Map<Customer>(customerRequestModel);
+            await _customerRepository.DeleteCustomerAsync(customer);
         }
 
-        public async Task<CustomerResponseModel> ListAllCustomers(CustomerRequestModel customerRequestModel)
+        public async Task<CustomerResponseModel> GetCustomerByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var customer = await _customerRepository.GetCustomerByIdAsync(id);
+            return _mapper.Map<CustomerResponseModel>(customer);
         }
 
-        public async Task<CustomerResponseModel> UpdateCustomerDetails(CustomerRequestModel customerRequestModel)
+        public async Task<IEnumerable<CustomerResponseModel>> ListAllCustomersAsync()
         {
-            throw new NotImplementedException();
+            var customer = await _customerRepository.ListAllCustomersAsync();
+            return _mapper.Map<IEnumerable<CustomerResponseModel>>(customer);
         }
+
+        public async Task<CustomerResponseModel> UpdateCustomerDetailsAsync(CustomerRequestModel customerRequestModel)
+        {
+            var customer = _mapper.Map<Customer>(customerRequestModel);
+            var updatedCustomer = await _customerRepository.UpdateCustomerAsync(customer);
+            return _mapper.Map<CustomerResponseModel>(updatedCustomer);
+        }
+
     }
 }

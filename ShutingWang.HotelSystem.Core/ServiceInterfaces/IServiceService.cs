@@ -10,9 +10,9 @@ namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
 {
     public interface IServiceService
     {
-        Task<ServiceResponseModel> AddNewService(ServiceRequestModel serviceRequestModel);
-        Task<ServiceResponseModel> UpdateServiceDetails(ServiceRequestModel serviceRequestModel);
-        Task DeleteServiceInfo(ServiceRequestModel serviceRequestModel);
-        Task<ServiceResponseModel> ListAllServices(ServiceRequestModel serviceRequestModel);
+        Task<ServiceResponseModel> AddNewServiceAsync(ServiceRequestModel serviceRequestModel);
+        Task<ServiceResponseModel> UpdateServiceDetailsAsync(ServiceRequestModel serviceRequestModel);
+        Task DeleteServiceInfoAsync(ServiceRequestModel serviceRequestModel);
+        Task<IEnumerable<ServiceResponseModel>> ListAllServicesAsync();
     }
 }

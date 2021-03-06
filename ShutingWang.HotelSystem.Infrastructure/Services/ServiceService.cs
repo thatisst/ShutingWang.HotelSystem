@@ -18,22 +18,22 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
             _serviceRepository = serviceRepository;
         }
 
-        public async Task<ServiceResponseModel> AddNewService(ServiceRequestModel serviceRequestModel)
+        public async Task<ServiceResponseModel> AddNewServiceAsync(ServiceRequestModel serviceRequestModel)
         {
             throw new NotImplementedException();
         }
 
-        public async Task DeleteServiceInfo(ServiceRequestModel serviceRequestModel)
+        public async Task DeleteServiceInfoAsync(ServiceRequestModel serviceRequestModel)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponseModel> ListAllServices(ServiceRequestModel serviceRequestModel)
+        public async Task<IEnumerable<ServiceResponseModel>> ListAllServicesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResponseModel> UpdateServiceDetails(ServiceRequestModel serviceRequestModel)
+        public async Task<ServiceResponseModel> UpdateServiceDetailsAsync(ServiceRequestModel serviceRequestModel)
         {
             throw new NotImplementedException();
         }

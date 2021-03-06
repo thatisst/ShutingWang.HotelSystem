@@ -18,27 +18,27 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
             _roomTypeRepository = roomTypeRepository;
         }
 
-        public async Task<RoomTypeResponseModel> AddNewRoomTpye(RoomTypeRequestModel roomTypeRequestModel)
+        public async Task<RoomTypeResponseModel> AddNewRoomTpyeAsync(RoomTypeRequestModel roomTypeRequestModel)
         {
             throw new NotImplementedException();
         }
 
-        public async Task DeleteRoomTypeInfo(RoomTypeRequestModel roomTypeRequestModel)
+        public async Task DeleteRoomTypeInfoAsync(RoomTypeRequestModel roomTypeRequestModel)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomsByRoomType(int id)
+        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomsByRoomTypeAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<RoomTypeResponseModel> ListAllRoomTypes(RoomTypeRequestModel roomTypeRequestModel)
+        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomTypesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<RoomTypeResponseModel> UpdateRoomTypeDetails(RoomTypeRequestModel roomTypeRequestModel)
+        public async Task<RoomTypeResponseModel> UpdateRoomTypeDetailsAsync(RoomTypeRequestModel roomTypeRequestModel)
         {
             throw new NotImplementedException();
         }
