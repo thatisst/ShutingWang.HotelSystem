@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShutingWang.HotelSystem.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,13 @@ namespace ShutingWang.HotelSystem.API.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        public CustomerController()
+        private readonly CustomerService _customerService;
+        public CustomerController(CustomerService customerService)
         {
-
+            _customerService = customerService;
         }
+
+        //[HttpGet]
+
     }
 }

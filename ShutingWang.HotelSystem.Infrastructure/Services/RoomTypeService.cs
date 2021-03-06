@@ -1,4 +1,7 @@
-﻿using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
+﻿using ShutingWang.HotelSystem.Core.Models.Request;
+using ShutingWang.HotelSystem.Core.Models.Response;
+using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
+using ShutingWang.HotelSystem.Core.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,31 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
         public RoomTypeService(IRoomTypeRepository roomTypeRepository)
         {
             _roomTypeRepository = roomTypeRepository;
+        }
+
+        public async Task<RoomTypeResponseModel> AddNewRoomTpye(RoomTypeRequestModel roomTypeRequestModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task DeleteRoomTypeInfo(RoomTypeRequestModel roomTypeRequestModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomsByRoomType(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<RoomTypeResponseModel> ListAllRoomTypes(RoomTypeRequestModel roomTypeRequestModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<RoomTypeResponseModel> UpdateRoomTypeDetails(RoomTypeRequestModel roomTypeRequestModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }

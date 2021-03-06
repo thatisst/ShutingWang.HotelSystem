@@ -24,8 +24,4 @@
 	  <ProjectReference Include="..\ShutingWang.HotelSystem.Core\ShutingWang.HotelSystem.Core.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Helpers\" />
-	</ItemGroup>
-
 </Project>

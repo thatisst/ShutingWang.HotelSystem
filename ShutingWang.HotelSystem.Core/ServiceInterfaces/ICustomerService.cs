@@ -10,9 +10,9 @@ namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
 {
     public interface ICustomerService
     {
-        //Task<CustomerResponseModel> AddCustomer(CustomerRequestModel customerRequestModel);
-        //Task<CustomerResponseModel> UpdateCustomer(CustomerRequestModel customerRequestModel);
-        //Task<CustomerResponseModel> DeleteCustomer(CustomerRequestModel customerRequestModel);
-        //Task<CustomerResponseModel> ListAllCustomer(CustomerRequestModel customerRequestModel);
+        Task<CustomerResponseModel> AddNewCustomer(CustomerRequestModel customerRequestModel);
+        Task<CustomerResponseModel> UpdateCustomerDetails(CustomerRequestModel customerRequestModel);
+        Task DeleteCustomerInfo(CustomerRequestModel customerRequestModel);
+        Task<CustomerResponseModel> ListAllCustomers(CustomerRequestModel customerRequestModel);
     }
 }
