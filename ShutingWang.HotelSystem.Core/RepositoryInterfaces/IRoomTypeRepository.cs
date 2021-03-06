@@ -10,7 +10,7 @@ namespace ShutingWang.HotelSystem.Core.RepositoryInterfaces
 {
     public interface IRoomTypeRepository
     {
-        //Task<RoomType> GetByIdAsync(int id);
+        //Task<RoomType> GetRoomTypeByIdAsync(int id);
         Task<IEnumerable<Roomtype>> ListAllRoomTypesAsync();
         Task<Roomtype> AddRoomTypeAsync(Roomtype roomType);
         Task<Roomtype> UpdateRoomTypeAsync(Roomtype roomType);

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
+namespace ShutingWang.HotelSystem.Infrastructure.Services
 {
-    public interface IRoomTypeService
+    public class CustomerService
     {
     }
 }

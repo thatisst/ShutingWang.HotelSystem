@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
 {
-    interface IServiceService
+    public interface IServiceService
     {
     }
 }

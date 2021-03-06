@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
 using ShutingWang.HotelSystem.Infrastructure.Data;
+using ShutingWang.HotelSystem.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,11 @@ namespace ShutingWang.HotelSystem.MVC
             services.AddDbContext<HotelSystemDbContext>(options =>
                 options.UseSqlServer(Configuration
                     .GetConnectionString("HotelSystemDbConnection")));
+
+            services.AddTransient<IRoomRepository, RoomRepository>();
+            services.AddTransient<IRoomTypeRepository, RoomTypeRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IServiceRepository, ServiceRepository>();
 
         }
 

@@ -9,7 +9,7 @@ namespace ShutingWang.HotelSystem.Core.RepositoryInterfaces
 {
     public interface ICustomerRepository
     {
-        //Task<Customer> GetByIdAsync(int id);
+        Task<Customer> GetCustomerByIdAsync(int id);
         Task<IEnumerable<Customer>> ListAllCustomersAsync();
         Task<Customer> AddCustomerAsync(Customer customer);
         Task<Customer> UpdateCustomerAsync(Customer customer);
