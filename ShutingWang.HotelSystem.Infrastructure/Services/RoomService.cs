@@ -1,4 +1,6 @@
-﻿using ShutingWang.HotelSystem.Core.Models.Request;
+﻿using AutoMapper;
+using ShutingWang.HotelSystem.Core.Entities;
+using ShutingWang.HotelSystem.Core.Models.Request;
 using ShutingWang.HotelSystem.Core.Models.Response;
 using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
 using ShutingWang.HotelSystem.Core.ServiceInterfaces;
@@ -13,19 +15,32 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
     public class RoomService : IRoomService
     {
         private readonly IRoomRepository _roomRepository;
-        public RoomService(IRoomRepository roomRepository)
+        private readonly IMapper _mapper;
+
+        public RoomService(IRoomRepository roomRepository
+            , IMapper mapper)
         {
             _roomRepository = roomRepository;
+            _mapper = mapper;
         }
 
-        public async Task<RoomResponseModel> AddNewRoomTpyeAsync(RoomRequestModel roomTypeRequestModel)
+        public async Task<RoomResponseModel> AddNewRoomAsync(RoomRequestModel roomRequestModel)
         {
-            throw new NotImplementedException();
+            var room = _mapper.Map<Room>(roomRequestModel);
+            var createdRoom = await _roomRepository.AddRoomAsync(room);
+            return _mapper.Map<RoomResponseModel>(createdRoom);
         }
 
-        public async Task DeleteRoomTypeInfoAsync(RoomRequestModel roomTypeRequestModel)
+        public async Task DeleteRoomInfoAsync(int id)
         {
-            throw new NotImplementedException();
+            var room = await _roomRepository.GetRoomByIdAsync(id);
+            await _roomRepository.DeleteRoomAsync(room);
+        }
+
+        public async Task<RoomResponseModel> GetRoomByIdAsync(int id)
+        {
+            var room = await _roomRepository.GetRoomByIdAsync(id);
+            return _mapper.Map<RoomResponseModel>(room);
         }
 
         public async Task<bool> isRoomOccupiedAsync(int id)
@@ -35,14 +50,23 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
             return isOccupied;
         }
 
-        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomTypesAsync()
+        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomAsync()
         {
-            throw new NotImplementedException();
+            var rooms = await _roomRepository.ListAllRoomsAsync();
+            return _mapper.Map<IEnumerable<RoomResponseModel>>(rooms);
         }
 
-        public async Task<RoomResponseModel> UpdateRoomTypeDetailsAsync(RoomRequestModel roomTypeRequestModel)
+        public async Task<IEnumerable<RoomResponseModel>> ListAllRoomsByRoomTypeAsync(int id)
         {
-            throw new NotImplementedException();
+            var rooms = await _roomRepository.ListAsync(r => r.Roomtype.Id == id);
+            return _mapper.Map<IEnumerable<RoomResponseModel>>(rooms);
+        }
+
+        public async Task<RoomResponseModel> UpdateRoomDetailsAsync(RoomRequestModel roomRequestModel)
+        {
+            var room = _mapper.Map<Room>(roomRequestModel);
+            var updatedRoom = await _roomRepository.UpdateRoomAsync(room);
+            return _mapper.Map<RoomResponseModel>(updatedRoom);
         }
     }
 }

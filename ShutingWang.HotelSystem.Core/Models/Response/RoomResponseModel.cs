@@ -13,8 +13,12 @@ namespace ShutingWang.HotelSystem.Core.Models.Response
         public int RtCode { get; set; }
         public bool Status { get; set; }
 
-        public Roomtype Roomtype { get; set; }
-        public ICollection<Service> Services { get; set; }
-        public ICollection<Customer> Customers { get; set; }
+
+        public string RtDesc { get; set; }
+        public decimal Rent { get; set; }
+
+
+        //public ICollection<Service> Services { get; set; }
+        //public ICollection<Customer> Customers { get; set; }
     }
 }

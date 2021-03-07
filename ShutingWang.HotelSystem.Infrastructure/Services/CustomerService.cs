@@ -31,9 +31,9 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
             return _mapper.Map<CustomerResponseModel>(createdCustomer);
         }
 
-        public async Task DeleteCustomerInfoAsync(CustomerRequestModel customerRequestModel)
+        public async Task DeleteCustomerInfoAsync(int id)
         {
-            var customer = _mapper.Map<Customer>(customerRequestModel);
+            var customer = await _customerRepository.GetCustomerByIdAsync(id);
             await _customerRepository.DeleteCustomerAsync(customer);
         }
 

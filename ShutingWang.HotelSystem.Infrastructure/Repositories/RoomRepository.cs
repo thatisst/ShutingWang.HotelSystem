@@ -6,6 +6,7 @@ using ShutingWang.HotelSystem.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,7 +43,13 @@ namespace ShutingWang.HotelSystem.Infrastructure.Repositories
 
         public async Task<IEnumerable<Room>> ListAllRoomsAsync()
         {
-            return await _dbContext.Set<Room>().ToListAsync();
+            return await _dbContext.Set<Room>().Include(r => r.Roomtype).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Room>> ListAsync(Expression<Func<Room, bool>> filter)
+        {
+            var filteredList = await _dbContext.Set<Room>().Where(filter).ToListAsync();
+            return filteredList;
         }
 
         public async Task<Room> UpdateRoomAsync(Room room)

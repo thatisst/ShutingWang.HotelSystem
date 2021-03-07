@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
 using ShutingWang.HotelSystem.Core.ServiceInterfaces;
 using ShutingWang.HotelSystem.Infrastructure.Data;
+using ShutingWang.HotelSystem.Infrastructure.Helpers;
 using ShutingWang.HotelSystem.Infrastructure.Repositories;
 using ShutingWang.HotelSystem.Infrastructure.Services;
 using System;
@@ -35,7 +36,7 @@ namespace ShutingWang.HotelSystem.MVC
                 options.UseSqlServer(Configuration
                     .GetConnectionString("HotelSystemDbConnection")));
 
-            //services.AddAutoMapper(typeof(Startup), typeof(HotelSystemMappingProfile));
+            services.AddAutoMapper(typeof(Startup), typeof(HotelSystemMappingProfile));
 
             services.AddTransient<IRoomRepository, RoomRepository>();
             services.AddTransient<IRoomTypeRepository, RoomTypeRepository>();

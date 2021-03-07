@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShutingWang.HotelSystem.Core.Models.Request;
+using ShutingWang.HotelSystem.Core.ServiceInterfaces;
 using ShutingWang.HotelSystem.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,18 @@ namespace ShutingWang.HotelSystem.API.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly CustomerService _customerService;
-        public CustomerController(CustomerService customerService)
+        private readonly ICustomerService _customerService;
+        public CustomerController(ICustomerService customerService)
         {
             _customerService = customerService;
+        }
+
+        [HttpGet]
+        [Route("", Name = "GetCustomers")]
+        public async Task<ActionResult> ListAllCustomerAsync()
+        {
+            var customer = await _customerService.ListAllCustomersAsync();
+            return Ok(customer);
         }
 
         [HttpGet]
@@ -45,9 +54,9 @@ namespace ShutingWang.HotelSystem.API.Controllers
 
         [HttpPost]
         [Route("delete")]
-        public async Task<ActionResult> DeleteCustomerAsync(CustomerRequestModel customerRequestModel)
+        public async Task<ActionResult> DeleteCustomerAsync(int id)
         {
-            await _customerService.DeleteCustomerInfoAsync(customerRequestModel);
+            await _customerService.DeleteCustomerInfoAsync(id);
             return Ok();
         }
 

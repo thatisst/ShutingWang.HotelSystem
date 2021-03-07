@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,5 +15,7 @@ namespace ShutingWang.HotelSystem.Core.RepositoryInterfaces
         Task<Room> AddRoomAsync(Room room);
         Task<Room> UpdateRoomAsync(Room room);
         Task DeleteRoomAsync(Room room);
+
+        Task<IEnumerable<Room>> ListAsync(Expression<Func<Room, bool>> filter);
     }
 }

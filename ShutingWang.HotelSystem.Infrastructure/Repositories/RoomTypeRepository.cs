@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShutingWang.HotelSystem.Core.Entities;
+using ShutingWang.HotelSystem.Core.Exceptions;
 using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
 using ShutingWang.HotelSystem.Infrastructure.Data;
 using System;
@@ -29,6 +30,14 @@ namespace ShutingWang.HotelSystem.Infrastructure.Repositories
         {
             _dbContext.Set<Roomtype>().Remove(roomType);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Roomtype> GetRoomTypeByIdAsync(int id)
+        {
+            var roomtype = await _dbContext.Roomtypes.FirstOrDefaultAsync();
+            if (roomtype == null)
+                throw new NotFoundException("Room Type Not found");
+            return roomtype;
         }
 
         public async Task<IEnumerable<Roomtype>> ListAllRoomTypesAsync()

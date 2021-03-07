@@ -12,7 +12,9 @@ namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
     {
         Task<ServiceResponseModel> AddNewServiceAsync(ServiceRequestModel serviceRequestModel);
         Task<ServiceResponseModel> UpdateServiceDetailsAsync(ServiceRequestModel serviceRequestModel);
-        Task DeleteServiceInfoAsync(ServiceRequestModel serviceRequestModel);
+        Task DeleteServiceInfoAsync(int id);
         Task<IEnumerable<ServiceResponseModel>> ListAllServicesAsync();
+
+        Task<ServiceResponseModel> GetServiceByIdAsync(int id);
     }
 }

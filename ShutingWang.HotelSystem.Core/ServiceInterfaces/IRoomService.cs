@@ -11,10 +11,15 @@ namespace ShutingWang.HotelSystem.Core.ServiceInterfaces
     public interface IRoomService
     {
         Task<bool> isRoomOccupiedAsync(int id);
-        Task<RoomResponseModel> AddNewRoomTpyeAsync(RoomRequestModel roomTypeRequestModel);
-        Task<RoomResponseModel> UpdateRoomTypeDetailsAsync(RoomRequestModel roomTypeRequestModel);
-        Task DeleteRoomTypeInfoAsync(RoomRequestModel roomTypeRequestModel);
-        Task<IEnumerable<RoomResponseModel>> ListAllRoomTypesAsync();
+        Task<RoomResponseModel> AddNewRoomAsync(RoomRequestModel roomRequestModel);
+        Task<RoomResponseModel> UpdateRoomDetailsAsync(RoomRequestModel roomRequestModel);
+        Task DeleteRoomInfoAsync(int id);
+        Task<IEnumerable<RoomResponseModel>> ListAllRoomAsync();
+
+        Task<IEnumerable<RoomResponseModel>> ListAllRoomsByRoomTypeAsync(int id);
+        Task<RoomResponseModel> GetRoomByIdAsync(int id);
+
+
 
     }
 }

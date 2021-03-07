@@ -28,6 +28,18 @@ namespace ShutingWang.HotelSystem.Infrastructure.Data
             modelBuilder.Entity<Room>(ConfigureRoom);
             modelBuilder.Entity<Service>(ConfigureService);
             modelBuilder.Entity<Customer>(ConfigureCustomer);
+            modelBuilder.Entity<Room>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Roomtype>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Service>()
+                .Property(p => p.Id)
+                .ValueGeneratedOnAdd();
         }
 
         private void ConfigureRoomType(EntityTypeBuilder<Roomtype> builder)
