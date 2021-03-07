@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ShutingWang.HotelSystem.Core.Entities;
+using ShutingWang.HotelSystem.Core.Exceptions;
 using ShutingWang.HotelSystem.Core.Models.Request;
 using ShutingWang.HotelSystem.Core.Models.Response;
 using ShutingWang.HotelSystem.Core.RepositoryInterfaces;
@@ -15,19 +16,28 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
+        private readonly IRoomRepository _roomRepository;
         private readonly IMapper _mapper;
 
         public CustomerService(ICustomerRepository customerRepository
-            , IMapper mapper)
+            , IMapper mapper
+            , IRoomRepository roomRepository)
         {
             _customerRepository = customerRepository;
+            _roomRepository = roomRepository;
             _mapper = mapper;
         }
 
         public async Task<CustomerResponseModel> AddNewCustomerAsync(CustomerRequestModel customerRequestModel)
         {
             var customer = _mapper.Map<Customer>(customerRequestModel);
+            var bookingRoom = await _roomRepository.GetRoomByIdAsync(customer.RoomNo);
+            var isOccupied = !bookingRoom.Status;
+            if (isOccupied)
+                throw new ConflictException("The room is occupied!");
             var createdCustomer = await _customerRepository.AddCustomerAsync(customer);
+            bookingRoom.Status = false;
+            await _roomRepository.UpdateRoomAsync(bookingRoom);
             return _mapper.Map<CustomerResponseModel>(createdCustomer);
         }
 
