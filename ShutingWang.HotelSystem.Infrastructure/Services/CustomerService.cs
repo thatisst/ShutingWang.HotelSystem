@@ -50,7 +50,9 @@ namespace ShutingWang.HotelSystem.Infrastructure.Services
         public async Task<CustomerResponseModel> GetCustomerByIdAsync(int id)
         {
             var customer = await _customerRepository.GetCustomerByIdAsync(id);
-            return _mapper.Map<CustomerResponseModel>(customer);
+            var customerResp = _mapper.Map<CustomerResponseModel>(customer);
+            customerResp.RoomRypeDesc = customer.Room.Roomtype.RtDesc;
+            return customerResp;
         }
 
         public async Task<IEnumerable<CustomerResponseModel>> ListAllCustomersAsync()

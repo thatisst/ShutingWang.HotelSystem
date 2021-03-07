@@ -44,16 +44,17 @@ namespace ShutingWang.HotelSystem.API.Controllers
             return Ok(room);
         }
 
-        [HttpPost]
-        [Route("update")]
+        [HttpPut]
+        [Route("update/{id:int}")]
         public async Task<ActionResult> UpdateRoomDetailsAsync(RoomRequestModel roomRequestModel)
         {
+            int id = roomRequestModel.Id;
             var room = await _roomService.UpdateRoomDetailsAsync(roomRequestModel);
             return Ok(room);
         }
 
-        [HttpPost]
-        [Route("delete")]
+        [HttpDelete]
+        [Route("delete/{id:int}")]
         public async Task<ActionResult> DeleteRoomInfoAsync(int id)
         {
             await _roomService.DeleteRoomInfoAsync(id);
